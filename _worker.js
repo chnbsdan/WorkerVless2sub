@@ -1,4 +1,3 @@
-
 let 快速订阅访问入口 = ['auto'];
 let addresses = [];
 let addressesapi = [];
@@ -45,7 +44,13 @@ let alpn = 'h3';
 let 网络备案 = `<a href='https://hangdn.com'>BSDAN 智能家居制造商</a>`;//写你自己的维护者广告
 let 额外ID = '0';
 let 加密方式 = 'auto';
-let 网站图标, 网站头像, 网站背景, xhttp = '';
+let 网站图标, 网站头像, 网站背景, xhttp = 'https://tc.1356666.xyz/file/1751375155852_2039852.jpg';
+let 默认背景图 = [
+    'https://images.unsplash.com/photo-1707343843437-caacff5cfa74',
+    'https://images.unsplash.com/photo-1707343844152-6d33a0bb32c3',
+    'https://images.unsplash.com/photo-1707343843598-3b31eb1aef9e'
+];
+
 async function 整理优选列表(api) {
 	if (!api || api.length === 0) return [];
 
@@ -482,12 +487,38 @@ export default {
 		if (env.CMPROXYIPS) 匹配PROXYIP = await 整理(env.CMPROXYIPS);;
 		if (env.CFPORTS) httpsPorts = await 整理(env.CFPORTS);
 		EndPS = env.PS || EndPS;
-		网站图标 = env.ICO ? `<link rel="icon" sizes="32x32" href="https://raw.cmliussss.com/favicon.ico">` : '';
+		网站图标 = env.ICO ? `<link rel="icon" sizes="32x32" href="${env.ICO}">` : '';
 		网站头像 = env.PNG ? `<div class="logo-wrapper"><div class="logo-border"></div><img src="${env.PNG}" alt="Logo"></div>` : '';
+		
+		// ==================== 背景图处理优化 ====================
 		if (env.IMG) {
 			const imgs = await 整理(env.IMG);
-			网站背景 = `background-image: url ('https://raw.cmliussss.com/img/900x400/00957-1865061900-keqing.png');`;
-		} else 网站背景 = '';
+			if (imgs.length > 0) {
+				// 预加载背景图并检查可用性
+				const availableImgs = await Promise.all(imgs.map(async img => {
+					try {
+						const response = await fetch(img, { method: 'HEAD' });
+						return response.ok ? img : null;
+					} catch {
+						return null;
+					}
+				}));
+				
+				const validImgs = availableImgs.filter(img => img !== null);
+				网站背景 = validImgs.length > 0 
+					? `background-image: url('${validImgs[Math.floor(Math.random() * validImgs.length)]}');` 
+					: '';
+			} else {
+				网站背景 = '';
+			}
+		} else {
+			// 使用默认背景图
+			网站背景 = 默认背景图.length > 0
+				? `background-image: url('${默认背景图[Math.floor(Math.random() * 默认背景图.length)]}');`
+				: '';
+		}
+		// ==================== 背景图处理结束 ====================
+		
 		网络备案 = env.BEIAN || env.BY || 网络备案;
 		const userAgentHeader = request.headers.get('User-Agent');
 		const userAgent = userAgentHeader ? userAgentHeader.toLowerCase() : "null";
@@ -1044,30 +1075,40 @@ async function subHtml(request) {
 						display: flex;
 						justify-content: center;
 						align-items: center;
+						/* 添加渐变遮罩增强文字可读性 */
+						position: relative;
+					}
+					
+					body::before {
+						content: '';
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						background: linear-gradient(135deg, rgba(245, 246, 250, 0.9) 0%, rgba(245, 246, 250, 0.7) 100%);
+						z-index: -1;
 					}
 					
 					.container {
 						position: relative;
-						/* 使用rgba设置半透明背景 */
-						background: rgba(255, 255, 255, 0.7);
-						/* 添加磨砂玻璃效果 */
-						backdrop-filter: blur(10px);
-						-webkit-backdrop-filter: blur(10px); /* Safari兼容 */
+						background: rgba(255, 255, 255, 0.85);
+						backdrop-filter: blur(12px);
+						-webkit-backdrop-filter: blur(12px);
 						max-width: 600px;
 						width: 90%;
 						padding: 2rem;
 						border-radius: 20px;
-						/* 调整阴影效果增加通透感 */
-						box-shadow: 0 10px 20px rgba(0,0,0,0.05),
-									inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-						transition: transform 0.3s ease;
+						box-shadow: 0 10px 30px rgba(0,0,0,0.1),
+									inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+						transition: transform 0.3s ease, box-shadow 0.3s ease;
+						z-index: 1;
 					}
 
-					/* 调整hover效果 */
 					.container:hover {
 						transform: translateY(-5px);
-						box-shadow: 0 15px 30px rgba(0,0,0,0.1),
-									inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+						box-shadow: 0 15px 35px rgba(0,0,0,0.15),
+									inset 0 0 0 1px rgba(255, 255, 255, 0.3);
 					}
 					
 					h1 {
@@ -1318,10 +1359,12 @@ async function subHtml(request) {
 						display: none;
 					}
 				</style>
+				<!-- 添加背景图预加载 -->
+				${默认背景图.map(img => `<link rel="preload" href="${img}" as="image">`).join('')}
 				<script src="https://cdn.jsdelivr.net/npm/@keeex/qrcodejs-kx@1.0.2/qrcode.min.js"></script>
 			</head>
 			<body>
-				<a href="${atob('aHR0cHM6Ly9naXRodWIuY29tL2NtbGl1L1dvcmtlclZsZXNzMnN1Yg==')}" target="_blank" class="github-corner" aria-label="View source on Github">
+				<a href="${atob('aHR0cHM6Ly9naXRodWIuY29tL2NtbGl1L3dvcmtlclZsZXNzMnN1Yg==')}" target="_blank" class="github-corner" aria-label="View source on Github">
 					<svg viewBox="0 0 250 250" aria-hidden="true">
 						<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
 						<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
@@ -1471,6 +1514,3 @@ async function subHtml(request) {
 	});
 
 }
-
-
-
