@@ -482,11 +482,11 @@ export default {
 		if (env.CMPROXYIPS) 匹配PROXYIP = await 整理(env.CMPROXYIPS);;
 		if (env.CFPORTS) httpsPorts = await 整理(env.CFPORTS);
 		EndPS = env.PS || EndPS;
-		网站图标 = env.ICO ? `<link rel="icon" sizes="32x32" href="${env.ICO}">` : '';
+		网站图标 = env.ICO ? `<link rel="icon" sizes="32x32" href="https://raw.cmliussss.com/favicon.ico">` : '';
 		网站头像 = env.PNG ? `<div class="logo-wrapper"><div class="logo-border"></div><img src="${env.PNG}" alt="Logo"></div>` : '';
 		if (env.IMG) {
 			const imgs = await 整理(env.IMG);
-			网站背景 = `background-image: https://tc.1356666.xyz/file/1751375155852_2039852.jpg('${imgs[Math.floor(Math.random() * imgs.length)]}');`;
+			网站背景 = `background-image: url ('https://raw.cmliussss.com/img/900x400/00957-1865061900-keqing.png');`;
 		} else 网站背景 = '';
 		网络备案 = env.BEIAN || env.BY || 网络备案;
 		const userAgentHeader = request.headers.get('User-Agent');
@@ -1471,5 +1471,6 @@ async function subHtml(request) {
 	});
 
 }
+
 
 
