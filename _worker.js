@@ -44,16 +44,8 @@ let alpn = 'h3';
 let 网络备案 = `<a href='https://hangdn.com'>BSDAN 智能家居制造商</a>`;//写你自己的维护者广告
 let 额外ID = '0';
 let 加密方式 = 'auto';
-let 网站图标, 网站头像, 网站背景, xhttp = 'https://tc.1356666.xyz/file/1751375155852_2039852.jpg';
-// 设置默认图标
-网站图标 = env.ICO ? 
-  `<link rel="icon" sizes="32x32" href="${env.ICO}">` : 
-  '<link rel="icon" sizes="32x32" href="https://raw.cmliussss.com/favicon.ico">';
+let 网站图标, 网站头像, 网站背景, xhttp = '';
 
-// 设置默认头像
-网站头像 = env.PNG ? 
-  `<div class="logo-wrapper"><div class="logo-border"></div><img src="${env.PNG}" alt="Logo"></div>` : 
-  '<div class="logo-wrapper"><div class="logo-border"></div><img src="https://tc.1356666.xyz/file/1755410653958_hangdn.png" alt="Logo"></div>';
 let 默认背景图 = [
     'https://raw.cmliussss.com/img/900x400/00957-1865061900-keqing.png',
     'https://images.unsplash.com/photo-1707343844152-6d33a0bb32c3',
@@ -1523,4 +1515,5 @@ async function subHtml(request) {
 	});
 
 }
+
 
