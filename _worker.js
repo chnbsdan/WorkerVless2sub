@@ -486,8 +486,8 @@ export default {
 		网站头像 = env.PNG ? `<div class="logo-wrapper"><div class="logo-border"></div><img src="${env.PNG}" alt="Logo"></div>` : '';
 		if (env.IMG) {
 			const imgs = await 整理(env.IMG);
-			网站背景 = `background-image: url('${imgs[Math.floor(Math.random() * imgs.length)]}');`;
-		} else 网站背景 = 'https://tc.1356666.xyz/file/1751375155852_2039852.jpg';
+			网站背景 = `background-image: https://tc.1356666.xyz/file/1751375155852_2039852.jpg('${imgs[Math.floor(Math.random() * imgs.length)]}');`;
+		} else 网站背景 = '';
 		网络备案 = env.BEIAN || env.BY || 网络备案;
 		const userAgentHeader = request.headers.get('User-Agent');
 		const userAgent = userAgentHeader ? userAgentHeader.toLowerCase() : "null";
@@ -1471,4 +1471,5 @@ async function subHtml(request) {
 	});
 
 }
+
 
