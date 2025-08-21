@@ -1076,26 +1076,11 @@ async function subHtml(request) {
 						display: flex;
 						justify-content: center;
 						align-items: center;
-						/* 添加渐变遮罩增强文字可读性 */
-						position: relative;
-					}
-					
-					body::before {
-						content: '';
-						position: absolute;
-						top: 0;
-						left: 0;
-						right: 0;
-						bottom: 0;
-						background: linear-gradient(135deg, rgba(245, 246, 250, 0.9) 0%, rgba(245, 246, 250, 0.7) 100%);
-						z-index: -1;
 					}
 					
 					.container {
 						position: relative;
-						background: rgba(255, 255, 255, 0.85);
-						backdrop-filter: blur(12px);
-						-webkit-backdrop-filter: blur(12px);
+						background: #ffffff;
 						max-width: 600px;
 						width: 90%;
 						padding: 2rem;
@@ -1133,19 +1118,16 @@ async function subHtml(request) {
 					input {
 						width: 100%;
 						padding: 12px;
-						/* 修改边框颜色从 #eee 到更深的颜色 */
-						border: 2px solid rgba(0, 0, 0, 0.15);  /* 使用rgba实现更自然的深度 */
+						border: 2px solid rgba(0, 0, 0, 0.15);
 						border-radius: 10px;
 						font-size: 1rem;
 						transition: all 0.3s ease;
-						/* 添加轻微的内阴影增强边框效果 */
 						box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
 					}
 
 					input:focus {
 						outline: none;
 						border-color: var(--primary-color);
-						/* 增强focus状态下的阴影效果 */
 						box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15),
 									inset 0 2px 4px rgba(0, 0, 0, 0.03);
 					}
@@ -1184,7 +1166,6 @@ async function subHtml(request) {
 						color: var(--card-bg);
 						position: absolute;
 						top: 0;
-						right: 0;
 						border: 0;
 						width: 80px;
 						height: 80px;
@@ -1232,7 +1213,6 @@ async function subHtml(request) {
 
 					.logo-border {
 						position: absolute;
-						/* 扩大边框范围以确保完全覆盖 */
 						top: -3px;
 						left: -3px;
 						right: -3px;
@@ -1254,7 +1234,6 @@ async function subHtml(request) {
 					.logo-border::after {
 						content: '';
 						position: absolute;
-						/* 调整内圆遮罩的大小 */
 						inset: 3px;
 						border-radius: 50%;
 						background: var(--card-bg);
@@ -1328,13 +1307,13 @@ async function subHtml(request) {
 						margin-left: 8px;
 						cursor: pointer;
 						font-weight: bold;
-						position: relative;   /* 添加相对定位 */
-						top: -3px;            /* 微调垂直位置 */
+						position: relative;
+						top: -3px;
 					}
 
 					.info-tooltip {
 						display: none;
-						position: fixed; /* 改为固定定位 */
+						position: fixed;
 						background: white;
 						border: 1px solid var(--primary-color);
 						border-radius: 8px;
@@ -1342,11 +1321,11 @@ async function subHtml(request) {
 						z-index: 1000;
 						box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 						min-width: 200px;
-						max-width: 90vw;  /* 视窗宽度的90% */
-						width: max-content;  /* 根据内容自适应宽度 */
+						max-width: 90vw;
+						width: max-content;
 						left: 50%;
 						top: 50%;
-						transform: translate(-50%, -50%); /* 居中定位 */
+						transform: translate(-50%, -50%);
 						margin: 0;
 						line-height: 1.6;
 						font-size: 13px;
@@ -1355,12 +1334,10 @@ async function subHtml(request) {
 						overflow-wrap: break-word;
 					}
 
-					/* 移除原来的箭头 */
 					.info-tooltip::before {
 						display: none;
 					}
 				</style>
-				<!-- 添加背景图预加载 -->
 				${默认背景图.map(img => `<link rel="preload" href="${img}" as="image">`).join('')}
 				<script src="https://cdn.jsdelivr.net/npm/@keeex/qrcodejs-kx@1.0.2/qrcode.min.js"></script>
 			</head>
@@ -1405,12 +1382,11 @@ async function subHtml(request) {
 	
 				<script>
 					function toggleTooltip(event) {
-						event.stopPropagation(); // 阻止事件冒泡
+						event.stopPropagation();
 						const tooltip = document.getElementById('infoTooltip');
 						tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
 					}
 					
-					// 点击页面其他区域关闭提示框
 					document.addEventListener('click', function(event) {
 						const tooltip = document.getElementById('infoTooltip');
 						const infoIcon = document.querySelector('.info-icon');
@@ -1436,7 +1412,7 @@ async function subHtml(request) {
 							tooltip.style.padding = '8px 16px';
 							tooltip.style.background = '#4361ee';
 							tooltip.style.color = 'white';
-							tooltip.style.borderRadius = '4px';
+							tooltip.style.borrowRadius = '4px';
 							tooltip.style.zIndex = '1000';
 							tooltip.textContent = '已复制到剪贴板';
 							
@@ -1487,17 +1463,16 @@ async function subHtml(request) {
 							}
 							document.getElementById('result').value = subLink;
 	
-							// 更新二维码
 							const qrcodeDiv = document.getElementById('qrcode');
 							qrcodeDiv.innerHTML = '';
 							new QRCode(qrcodeDiv, {
 								text: subLink,
-								width: 220, // 调整宽度
-								height: 220, // 调整高度
-								colorDark: "#4a60ea", // 二维码颜色
-								colorLight: "#ffffff", // 背景颜色
-								correctLevel: QRCode.CorrectLevel.L, // 设置纠错级别
-								scale: 1 // 调整像素颗粒度
+								width: 220,
+								height: 220,
+								colorDark: "#4a60ea",
+								colorLight: "#ffffff",
+								correctLevel: QRCode.CorrectLevel.L,
+								scale: 1
 							});
 						} catch (error) {
 							alert('链接格式错误，请检查输入');
@@ -1515,6 +1490,3 @@ async function subHtml(request) {
 	});
 
 }
-
-
-
