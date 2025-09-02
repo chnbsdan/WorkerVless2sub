@@ -1,5 +1,3 @@
-
-
 let 快速订阅访问入口 = ['auto'];
 let addresses = [];
 let addressesapi = [];
@@ -29,7 +27,7 @@ let 临时中转域名 = [];
 let 临时中转域名接口 = '';
 let EndPS = '';
 let 协议类型 = atob(`\u0056\u006b\u0078\u0046\u0055\u0031\u004d\u003d`);
-let FileName = '优选订阅生成器';
+let FileName = '<span style="background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientMove 5s ease infinite; display: inline-block; font-weight: bold;">优选订阅生成器</span>';
 let SUBUpdateTime = 6;
 let total = 24;
 let timestamp = 4102329600000;
@@ -43,7 +41,7 @@ let MamaJustKilledAMan = ['telegram', 'twitter', 'miaoko'];
 let proxyIPPool = [];
 let socks5Data;
 let alpn = 'h3';
-let 网络备案 = `<a href='https://t.me/CMLiussss'>萌ICP备-20240707号</a>`;//写你自己的维护者广告
+let 网络备案 = `<a href='https://t.me/CMLiussss' style="background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientMove 5s ease infinite; font-weight: bold;">萌ICP备-20240707号</a>`;//写你自己的维护者广告
 let 额外ID = '0';
 let 加密方式 = 'auto';
 let 网站图标, 网站头像, 网站背景, xhttp = '';
@@ -658,7 +656,7 @@ export default {
 			
 			
 				
-				${atob('aHR0cHM6Ly9naXRodWIuY29tL2NtbGl1L3dvcmtlclZsZXNzMnN1Yg==')}
+				${atob('aHR0cHM6Ly9naXRodWIuY29tL2NobmJzZGFuL1dvcmtlclZsZXNzMnN1Yg==')}
 				`;
 
 				return new Response(responseText, {
@@ -1318,11 +1316,18 @@ async function subHtml(request) {
 					.info-tooltip::before {
 						display: none;
 					}
+					
+					/* 添加渐变文字动画 */
+					@keyframes gradientMove {
+						0% { background-position: 0% 50%; }
+						50% { background-position: 100% 50%; }
+						100% { background-position: 0% 50%; }
+					}
 				</style>
 				<script src="https://cdn.jsdelivr.net/npm/@keeex/qrcodejs-kx@1.0.2/qrcode.min.js"></script>
 			</head>
 			<body>
-				<a href="${atob('aHR0cHM6Ly9naXRodWIuY29tL2NtbGl1L1dvcmtlclZsZXNzMnN1Yg==')}" target="_blank" class="github-corner" aria-label="View source on Github">
+				<a href="https://github.com/chnbsdan/WorkerVless2sub" target="_blank" class="github-corner" aria-label="View source on Github">
 					<svg viewBox="0 0 250 250" aria-hidden="true">
 						<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
 						<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
@@ -1387,14 +1392,14 @@ async function subHtml(request) {
 						navigator.clipboard.writeText(resultInput.value).then(() => {
 							const tooltip = document.createElement('div');
 							tooltip.style.position = 'fixed';
-							tooltip.style.left = '50%';
-							tooltip.style.top = '20px';
-							tooltip.style.transform = 'translateX(-50%)';
-							tooltip.style.padding = '8px 16px';
-							tooltip.style.background = '#4361ee';
-							tooltip.style.color = 'white';
-							tooltip.style.borderRadius = '4px';
-							tooltip.style.zIndex = '1000';
+							tooltip.style.left: '50%';
+							tooltip.style.top: '20px';
+							tooltip.style.transform: 'translateX(-50%)';
+							tooltip.style.padding: '8px 16px';
+							tooltip.style.background: '#4361ee';
+							tooltip.style.color: 'white';
+							tooltip.style.borderRadius: '4px';
+							tooltip.style.zIndex: '1000';
 							tooltip.textContent = '已复制到剪贴板';
 							
 							document.body.appendChild(tooltip);
