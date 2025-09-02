@@ -9,7 +9,7 @@
         :root {
             --primary-color: #4361ee;
             --hover-color: #3b4fd3;
-            --card-bg: rgba(255, 255, 255, 0.15);
+            --card-bg: rgba(255, 255, 255, 0.1); /* 更透明的卡片背景 */
             --text-color: #fff;
             --input-bg: rgba(255, 255, 255, 0.12);
             --border-color: rgba(255, 255, 255, 0.2);
@@ -77,9 +77,7 @@
         }
         
         .container {
-            background: var(--card-bg);
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
+            background: var(--card-bg); /* 使用更透明的背景 */
             max-width: 600px;
             width: 100%;
             padding: 2.5rem;
@@ -157,6 +155,23 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             font-weight: 700;
             letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        /* 添加标题的发光效果 */
+        .logo-title h1::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff, #ff00ff);
+            background-size: 400% 100%;
+            animation: gradient-text 8s linear infinite;
+            border-radius: 10px;
+            filter: blur(2px);
         }
         
         @keyframes gradient-text {
@@ -293,10 +308,34 @@
             font-weight: bold;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
             font-size: 1.1rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        /* 添加公司名称的发光效果 */
+        .beian-info a::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff, #ff00ff);
+            background-size: 400% 100%;
+            animation: gradient-text 8s linear infinite;
+            z-index: -1;
+            border-radius: 7px;
+            filter: blur(5px);
+            opacity: 0.7;
         }
         
         .beian-info a:hover {
-            text-decoration: underline;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
         
         #qrcode {
@@ -345,7 +384,6 @@
             transform: translate(-50%, -50%);
             line-height: 1.6;
             font-size: 14px;
-            backdrop-filter: blur(10px);
         }
         
         .info-tooltip strong {
@@ -422,7 +460,6 @@
             z-index: 1000;
             opacity: 0;
             transition: opacity 0.3s;
-            backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
         }
         
