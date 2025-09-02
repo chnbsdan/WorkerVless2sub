@@ -27,7 +27,7 @@ let 临时中转域名 = [];
 let 临时中转域名接口 = '';
 let EndPS = '';
 let 协议类型 = atob(`\u0056\u006b\u0078\u0046\u0055\u0031\u004d\u003d`);
-let FileName = '<span style="background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientMove 5s ease infinite; display: inline-block; font-weight: bold;">优选订阅生成器</span>';
+let FileName = '优选订阅生成器';
 let SUBUpdateTime = 6;
 let total = 24;
 let timestamp = 4102329600000;
@@ -41,7 +41,7 @@ let MamaJustKilledAMan = ['telegram', 'twitter', 'miaoko'];
 let proxyIPPool = [];
 let socks5Data;
 let alpn = 'h3';
-let 网络备案 = `<a href='https://t.me/CMLiussss' style="background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientMove 5s ease infinite; font-weight: bold;">萌ICP备-20240707号</a>`;//写你自己的维护者广告
+let 网络备案 = `<a href='https://t.me/CMLiussss'>萌ICP备-20240707号</a>`;//写你自己的维护者广告
 let 额外ID = '0';
 let 加密方式 = 'auto';
 let 网站图标, 网站头像, 网站背景, xhttp = '';
@@ -224,7 +224,7 @@ async function sendMessage(type, ip, add_data = "") {
 
 	try {
 		let msg = "";
-		const response = await fetch(`http://ip-api.com/json/${ip}?lang=zh-CN`);
+		const response = await fetch(`http://ip-api.com/json/${ip?ip:'127.0.0.1'}?lang=zh-CN`);
 		if (response.ok) {
 			const ipInfo = await response.json();
 			msg = `${type}\nIP: ${ip}\n国家: ${ipInfo.country}\n<tg-spoiler>城市: ${ipInfo.city}\n组织: ${ipInfo.org}\nASN: ${ipInfo.as}\n${add_data}`;
@@ -297,7 +297,7 @@ function surge(content, url, path) {
 		}
 	}
 
-	输出内容 = `#!MANAGED-CONFIG ${url.href} interval=86400 strict=false` + 输出内容.substring(输出内容.indexOf('\n'));
+	输出内容 = `#!MANaged-CONFIG ${url.href} interval=86400 strict=false` + 输出内容.substring(输出内容.indexOf('\n'));
 	return 输出内容;
 }
 
@@ -442,7 +442,7 @@ async function getLink(重新汇总所有链接) {
 						节点LINK = 节点LINK.concat(lines);
 					} else {
 						const 尝试base64解码内容 = base64Decode(content);
-						if (尝试base64解码内容.includes('://')) {
+						if 尝试base64解码内容.includes('://')) {
 							const lines = 尝试base64解码内容.includes('\r\n') ? 尝试base64解码内容.split('\r\n') : 尝试base64解码内容.split('\n');
 							节点LINK = 节点LINK.concat(lines);
 						}
@@ -619,7 +619,7 @@ export default {
 				协议类型 = 'VMess';
 				额外ID = url.searchParams.get('alterid') || 额外ID;
 				加密方式 = url.searchParams.get('security') || 加密方式;
-			} else if (url.searchParams.has(atob('ZWRnZXR1bm5lbA==')) || url.searchParams.has('uuid')) {
+			} else if (url.searchParams.has(atob('ZWRnZXT1bm5lbA==')) || url.searchParams.has('uuid')) {
 				协议类型 = atob('VkxFU1M=');
 			} else if (url.searchParams.has(atob('ZXBlaXVz')) || url.searchParams.has('password') || url.searchParams.has('pw')) {
 				协议类型 = atob('VHJvamFu');
@@ -1014,7 +1014,7 @@ async function subHtml(request) {
 			<head>
 				<meta charset="UTF-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>${FileName}</title>
+				<title>优选订阅生成器</title>
 				${网站图标}
 				<style>
 					:root {
@@ -1071,9 +1071,14 @@ async function subHtml(request) {
 					
 					h1 {
 						text-align: center;
-						color: var(--primary-color);
 						margin-bottom: 2rem;
 						font-size: 1.8rem;
+						background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000);
+						background-size: 300% 300%;
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+						animation: gradientMove 5s ease infinite;
+						font-weight: bold;
 					}
 					
 					.input-group {
@@ -1259,6 +1264,12 @@ async function subHtml(request) {
 						text-decoration: none;
 						border-bottom: 1px dashed var(--primary-color);
 						padding-bottom: 2px;
+						background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000);
+						background-size: 300% 300%;
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+						animation: gradientMove 5s ease infinite;
+						font-weight: bold;
 					}
 
 					.beian-info a:hover {
@@ -1337,7 +1348,7 @@ async function subHtml(request) {
 				<div class="container">
 						<div class="logo-title">
 							${网站头像}
-							<h1>${FileName}</h1>
+							<h1>优选订阅生成器</h1>
 						</div>
 					<div class="input-group">
 						<label for="link">节点链接</label>
@@ -1392,14 +1403,14 @@ async function subHtml(request) {
 						navigator.clipboard.writeText(resultInput.value).then(() => {
 							const tooltip = document.createElement('div');
 							tooltip.style.position = 'fixed';
-							tooltip.style.left: '50%';
-							tooltip.style.top: '20px';
-							tooltip.style.transform: 'translateX(-50%)';
-							tooltip.style.padding: '8px 16px';
-							tooltip.style.background: '#4361ee';
-							tooltip.style.color: 'white';
-							tooltip.style.borderRadius: '4px';
-							tooltip.style.zIndex: '1000';
+							tooltip.style.left = '50%';
+							tooltip.style.top = '20px';
+							tooltip.style.transform = 'translateX(-50%)';
+							tooltip.style.padding = '8px 16px';
+							tooltip.style.background = '#4361ee';
+							tooltip.style.color = 'white';
+							tooltip.style.borderRadius = '4px';
+							tooltip.style.zIndex = '1000';
 							tooltip.textContent = '已复制到剪贴板';
 							
 							document.body.appendChild(tooltip);
